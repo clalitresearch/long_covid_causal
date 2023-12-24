@@ -89,7 +89,7 @@ vis.plot_SMDiD_heatmap(df_SMDiD, df_SMDID_rounded, title: "SMDiD Plot", FIGS_PAT
 
 The infection group is plotted both with the original average results, as well as a calculated DiD line, shifted to account for differences in baseline between the study groups prior to infection. The DiD in each month i is calculated as follows: $Infection_{DiD-correction_i}=μ_{i_{infected}}-diff_{pre}$ 
 
-where $ diff_{pre}=μ_{inf-pre}-μ_{control-pre}$ is the mean difference between the infected and control groups in the 12 months prior to infection
+where $diff_{pre}=μ_{inf-pre}-μ_{control-pre}$ is the mean difference between the infected and control groups in the 12 months prior to infection
 
 Results of chosen laboratories with this analysis are shown in Figure 3.
 
