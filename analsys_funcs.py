@@ -59,8 +59,7 @@ def single_laboratory_analysis_SMDiD(lab_df: pd.DataFrame, lab_name: str):
 
 
 def single_laboratory_analysis_SMD(lab_df: pd.DataFrame, lab_name: str):
-    """
-    Calculate the SMD between infected and control for 12 months pre-inf -> 12 months post for a single laboratory
+    """Calculate the SMD between infected and control for 12 months pre-inf -> 12 months post for a single laboratory
     See "Methods" section for further information about formulas.
     
     Args:
