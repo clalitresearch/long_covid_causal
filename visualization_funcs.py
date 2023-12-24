@@ -154,7 +154,7 @@ def plot_SMD_heatmap(df: pd.DataFrame, df_rounded: pd.DataFrame, title: str,
 
 
 def visualize_DiD_line_plot(lab_temp_df: pd.DataFrame, lab_name: str, lab_dir: str, figsize=(12,6)):
-    """Function that visualize mean average values plus DiD correction for a single laboratory
+    """Plots lineplot of mean average values plus DiD correction for a single laboratory
 
     Args:
         lab_temp_df (pd.DataFrame): laboratory dataframe of a single lab, contains rowid identifier, month, and result.
