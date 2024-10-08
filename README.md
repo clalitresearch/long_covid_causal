@@ -1,4 +1,4 @@
-# Longitudinal Effects of SARS-CoV-2 Infection on Laboratory Biomarkers
+# Trends of Common Laboratory Biomarkers after SARS-CoV-2 Infection
 
 ## SMD, SMDiD Analysis
 
