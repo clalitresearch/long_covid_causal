@@ -2,12 +2,9 @@
 
 ## SMD, SMDiD Analysis
 
-The following code uses the analysis and visualization functions defined above to recreate the analysis and visualizations. Each analysis is described based on the "Methods" section of the paper and further explained on the paper.
+The following code is an example of how to calculate each analysis mentioned in the manuscript. Each analysis is described based on the "Methods" section of the paper and further explained in the paper.
 
-To properly run the code, it is required to load a laboratory dataframe (*LAB_ALL*) with all 63 laboratory results throughout the study period. Two laboratory dataframes are required for complete analysis, one for for the general cohort and one for lab-specific cohorts.
-
-The dataframe should also include the following columns:  
-rowid(int, identifier), adjusted_lab_month/time(int, adjusted month/day, infection day/month = 0), group(str, infected/control group), result(float)
+A table with laboratory results must be loaded throughout the study period to properly run the code.
 
 #### *Due to data privacy regulations, data is unavailable.*
 
@@ -33,11 +30,11 @@ Example of calculation in Python:
 monthly_res = [] # contains the monthly SMD for each month
 monthly_CI = [] # contains the monthly SMD CI for each month 
 # Get mean result of each patient in each month (see "Methods")
-mean_all_df = lab_df.groupby(['group', 'month', 'id'])['result'].mean().reset_index()
+mean_all_df = ... # table of the mean result value per patient per month of each group
 for month in range(-12,13): # Calculate SMD and CI each month separately
     month_0 = mean_all_df[mean_all_df.adjusted_lab_month==month]
-    lab_month_inf = month_0[month_0.Group =='Infected']
-    lab_month_con = month_0[month_0.Group =='Control']
+    lab_month_inf = month_0[month_0.group =='Infected']
+    lab_month_con = month_0[month_0.group =='Control']
     month_std_inf = lab_month_inf["result"].std()
     month_std_con = lab_month_con["result"].std()
     month_mean_inf = lab_month_inf["result"].mean()
@@ -77,11 +74,11 @@ Example of calculation in Python:
 monthly_res = [lab_name]
 monthly_CI = [lab_name]
 # Get mean result of each patient in each month 
-mean_all_df = lab_df.groupby(['group', 'month', 'id'])['result'].mean().reset_index()
+mean_all_df = ... # table of the mean result value per patient per month of each group
 # Keep laboratories prior to infection to calculate SMD diff
 lab_temp_df_pre  = lab_df[(-365 < lab_df.adjusted_lab_time) & (lab_df.adjusted_lab_time < 0)]
-std_inf = lab_temp_df_pre[lab_temp_df_pre.group=='Infected']["Result"].std()
-std_con = lab_temp_df_pre[lab_temp_df_pre.group=='Control']["Result"].std()
+std_inf = lab_temp_df_pre[lab_temp_df_pre.group=='Infected']["result"].std()
+std_con = lab_temp_df_pre[lab_temp_df_pre.group=='Control']["result"].std()
 # Get mean results pre-infection
 mean_pre_df = mean_pre_df[mean_pre_df.adjusted_lab_month < 0]
 # Calculate standardized mean diff pre infection 
@@ -121,11 +118,11 @@ The infection group is plotted both with the original average results, as well a
 
 where $diff_{pre}=μ_{inf-pre}-μ_{control-pre}$ is the mean difference between the infected and control groups in the 12 months prior to infection
 
-Results of chosen laboratories with this analysis are shown in Figure 3.
+The results of the chosen laboratories with this analysis are shown in Figure 3.
 
 Example of calculation in Python:
 ```python
-mean_values_per_group = mean_monthly_res.groupby(['group','month'])['result'].mean().reset_index()
+mean_values_per_group = ... # table that contains monthly mean result per group 
 treated_avg = mean_values_per_group[mean_values_per_group.group=='Infected']['result']
 untreated_avg = mean_values_per_group[mean_values_per_group.group=='Control']['result']
 mean_values_per_group['difference_in_differences'] = treated_avg.reset_index(drop=True)-untreated_avg.reset_index(drop=True)
