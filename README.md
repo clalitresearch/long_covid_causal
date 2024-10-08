@@ -30,8 +30,6 @@ Results of SMD analysis are shown in Supplementary figures 1,2.
 
 Example of calculation in Python:
 ```python
-# SMD Analysis
-ךשנ
 monthly_res = [] # contains the monthly SMD for each month
 monthly_CI = [] # contains the monthly SMD CI for each month 
 # Get mean result of each patient in each month (see "Methods")
