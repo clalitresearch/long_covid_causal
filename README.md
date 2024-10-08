@@ -30,7 +30,7 @@ monthly_CI = [] # contains the monthly SMD CI for each month
 # Get mean result of each patient in each month (see "Methods")
 mean_all_df = ... # table of the mean result value per patient per month of each group
 for month in range(-12,13): # Calculate SMD and CI each month separately
-    month_0 = mean_all_df[mean_all_df.adjusted_lab_month==month]
+    month_0 = mean_all_df[mean_all_df.month==month]
     lab_month_inf = month_0[month_0.group =='Infected']
     lab_month_con = month_0[month_0.group =='Control']
     month_std_inf = lab_month_inf["result"].std()
@@ -74,16 +74,16 @@ monthly_CI = [lab_name]
 # Get mean result of each patient in each month 
 mean_all_df = ... # table of the mean result value per patient per month of each group
 # Keep laboratories prior to infection to calculate SMD diff
-lab_temp_df_pre  = lab_df[(-365 < lab_df.adjusted_lab_time) & (lab_df.adjusted_lab_time < 0)]
+lab_temp_df_pre  = lab_df[(-365 < lab_df.date) & (lab_df.date < 0)]
 std_inf = lab_temp_df_pre[lab_temp_df_pre.group=='Infected']["result"].std()
 std_con = lab_temp_df_pre[lab_temp_df_pre.group=='Control']["result"].std()
 # Get mean results pre-infection
-mean_pre_df = mean_pre_df[mean_pre_df.adjusted_lab_month < 0]
+mean_pre_df = mean_pre_df[mean_pre_df.month < 0]
 # Calculate standardized mean diff pre infection 
 smd_diff = (mean_pre_df[mean_pre_df.group=='Infected']["result"].mean() - 
             mean_pre_df[mean_pre_df.group=='Control']["result"].mean())/np.sqrt((std_inf**2+std_con**2)/2)
 for month in range(0,13): # Calculate SMDiD and CI each month separately
-    month_0 = mean_all_df[mean_all_df.adjusted_lab_month==month]
+    month_0 = mean_all_df[mean_all_df.month==month]
     lab_month_inf = month_0[month_0.group =='Infected']
     lab_month_con = month_0[month_0.group =='Control']
     month_std_inf = lab_month_inf["result"].std()
