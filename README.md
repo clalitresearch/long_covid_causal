@@ -2,9 +2,7 @@
 
 ## SMD, SMDiD Analysis
 
-The following code is an example of how to calculate each analysis mentioned in the manuscript. Each analysis is described based on the "Methods" section of the paper and further explained in the paper.
-
-A table with laboratory results must be loaded throughout the study period to properly run the code.
+The following code is an example of calculating each analysis mentioned in the manuscript. Each analysis is described based on the "Methods" section of the paper and further explained in the paper.
 
 #### *Due to data privacy regulations, data is unavailable.*
 
