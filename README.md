@@ -69,8 +69,8 @@ Results of SMDiD analysis are shown in Figure 2, and Supplementary Figures 3,4 (
 
 Example of calculation in Python:
 ```python
-monthly_res = [lab_name]
-monthly_CI = [lab_name]
+monthly_res = []
+monthly_CI = []
 # Get mean result of each patient in each month 
 mean_all_df = ... # table of the mean result value per patient per month of each group
 # Keep laboratories prior to infection to calculate SMD diff
